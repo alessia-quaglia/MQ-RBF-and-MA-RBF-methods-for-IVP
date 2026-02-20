@@ -17,7 +17,7 @@ function err = RBF_adams(f, u_es, a, b, u0, N, Meth)
 %               predictor-corrector
 % Output: err = global error at the final point t = b
 %
-h = (b-a)/N;
+h = (b-a) / N;
 t = linspace(a, b, N+1)';
 u = zeros(N+1, 1); 
 u(1) = u0;
@@ -32,7 +32,7 @@ for n = 3:N
         u(n+1) = u(n) + (3/2*h - 7/24*eps2*h^3)*t1 + (-1/2*h + 17/24*eps2*h^3)*t2;
     elseif Meth == 2 % MQ ab2am1
         eps2 = (t1 - 2*t2 + t3) / (h^2 * t2);
-        u_p= u(n) + (3/2*h - 7/24*eps2*h^3)*t1 + (-1/2*h + 17/24*eps2*h^3)*t2;
+        u_p = u(n) + (3/2*h - 7/24*eps2*h^3)*t1 + (-1/2*h + 17/24*eps2*h^3)*t2;
         t0 = f(t(n+1),u_p);
         u(n+1) = u(n) + (h/2 - eps2/24*h^3) * (t0 + t1); 
     elseif Meth == 3 % MA ab2
@@ -40,7 +40,7 @@ for n = 3:N
         u(n+1) = u(n) + (3/2*h - 41/72*eps2*h^3)*t1 + (-1/2*h + 31/72*eps2*h^3)*t2;
     elseif Meth == 4 % MA ab2am1
         eps2 = -(3*t1 - 6*t2 + 3*t3) / (h^2 * t2);
-        u_p= u(n) + (3/2*h - 41/72*eps2*h^3)*t1 + (-1/2*h + 31/72*eps2*h^3)*t2;
+        u_p = u(n) + (3/2*h - 41/72*eps2*h^3)*t1 + (-1/2*h + 31/72*eps2*h^3)*t2;
         t0 = f(t(n+1),u_p);
         u(n+1) = u(n) + (h/2 + eps2/72*h^3) * (t0 + t1); 
     else 
@@ -54,4 +54,5 @@ for n = 3:N
     end
 end
 err = abs(u(end) - u_es(b));
+
 
