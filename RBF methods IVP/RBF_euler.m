@@ -13,8 +13,8 @@ function err = RBF_euler(f, u_es, a, b, u0, N, Meth)
 %        Meth = RBF Euler's method: '1' MQ-RBF, '2' MA-RBF
 % Output: err = global error at the final point t = b
 %
-h = (b-a)/N;
-t = linspace(a,b,N+1)';
+h = (b-a) / N;
+t = linspace(a, b, N+1)';
 u = zeros(N+1, 1); 
 u(1) = u0;
 u(2) = u_es(t(2));
@@ -31,4 +31,5 @@ for n = 2:N
         warning('Method not available')
     end
 end
+
 err = abs(u(end) - u_es(b));
