@@ -1,4 +1,5 @@
 function table(met_name, N, met_err, met_ord)
+%
 % Usage:        table(met_name, N, met_err, met_ord)
 % Purpose:      it generates a LaTeX table showing the global errors and 
 %               the convergence orders versus different values of N
@@ -35,5 +36,6 @@ for m = 1:length(met_name)
     end
 end
 fprintf('\\hline\n\\end{tabular}\n');
+
 
 
