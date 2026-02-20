@@ -1,3 +1,6 @@
+% The following script generates the absolute stability regions 
+% for the analyzed MQ-RBF methods.
+
 addpath('Stability region')
 
 % Figure 2.1(a)
@@ -64,3 +67,4 @@ RBF_AM1
 title('Stability region')
 
 legend('MQ-RBF AM1')
+
