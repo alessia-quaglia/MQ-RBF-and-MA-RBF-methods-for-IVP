@@ -1,3 +1,8 @@
+% The following script generates the absolute stability regions 
+% for the analyzed MA-RBF methods.
+
+addpath('Stability region')
+
 % Figure 3.2(a)
 x = linspace(-4, 2, 400);
 y = linspace(-3, 3, 400);
@@ -86,4 +91,5 @@ hold off;
 figure
 RBF_AM1
 title('Stability region')
+
 legend('MA-RBF AM1')
