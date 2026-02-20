@@ -68,5 +68,5 @@ set(gca, 'XTick', N, 'XTickLabel', string(N));
 axis([10 400 10^(-9) 10^(-2)])
 title('Global errors for $u'' = -u^2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
-
 hold off;
+
