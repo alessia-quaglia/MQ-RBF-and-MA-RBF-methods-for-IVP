@@ -20,8 +20,8 @@ err_GAmidpoint = zeros(size(N));
 for i = 1:length(N)
     n = N(i);
     err_midpoint(i) = midpoint(f, u_esatta, a, b, u0, n);
-    err_MQmidpoint(i) = MQ_midpoint(f, u_esatta, a, b, u0, n);
-    err_GAmidpoint(i) = GA_midpoint(f, u_esatta, a, b, u0, n);
+    err_MQmidpoint(i) = RBF_midpoint(f, u_esatta, a, b, u0, n, 1);
+    err_GAmidpoint(i) = RBF_midpoint(f, u_esatta, a, b, u0, n, 2);
 end
 
 ord_midpoint = [NaN, log2(err_midpoint(1:end-1)./err_midpoint(2:end))];
@@ -56,3 +56,4 @@ title('Global errors for $u'' = -u^2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 
 hold off;
+
