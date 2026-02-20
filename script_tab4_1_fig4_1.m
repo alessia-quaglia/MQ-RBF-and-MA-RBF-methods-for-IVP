@@ -38,10 +38,10 @@ table_latex(met_name, N, met_err, met_ord);
 figure
 hold on; 
 slope_N = [10, 320];
-slope1_err = 1e-2 * (slope_N/slope_N(1)).^-1; 
-slope2_err = 1e-3 * (slope_N/slope_N(1)).^-2; 
-g_s1 = loglog(slope_N, slope1_err, 'b--', 'LineWidth', 1.2);
-g_s2 = loglog(slope_N, slope2_err, 'k--', 'LineWidth', 1.2);
+slope1 = 1e-2 * (slope_N/slope_N(1)).^-1; 
+slope2 = 1e-3 * (slope_N/slope_N(1)).^-2; 
+g_s1 = loglog(slope_N, slope1, 'b--', 'LineWidth', 1.2);
+g_s2 = loglog(slope_N, slope2, 'k--', 'LineWidth', 1.2);
 g_euler   = loglog(N, err_euler, 'b-o', 'LineWidth', 1, 'MarkerSize', 7);
 g_MQeuler  = loglog(N, err_MQeuler,   'k-s', 'LineWidth', 1, 'MarkerSize', 7);
 g_MAeuler = loglog(N, err_MAeuler,   'r-*', 'LineWidth', 1, 'MarkerSize', 7);
@@ -55,4 +55,5 @@ axis([10 400 10^(-7) 10^(-1)])
 title('Global errors for $u'' = -u^2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 hold off;
+
 
