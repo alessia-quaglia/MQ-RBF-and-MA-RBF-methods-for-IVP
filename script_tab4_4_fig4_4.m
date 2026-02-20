@@ -54,5 +54,5 @@ set(gca, 'XTick', N, 'XTickLabel', string(N));
 axis([10 400 10^(-6) 10^(-1)])
 title('Global errors for $u'' = \frac{2t^2-u}{t^2u-t}$', 'Interpreter', 'latex');
 axis square; grid on; box on;
-
 hold off;
+
