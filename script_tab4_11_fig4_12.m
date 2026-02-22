@@ -9,7 +9,7 @@ addpath('Classic methods IVP')
 addpath('RBF methods IVP')
 
 f = @(t,u) -4.*t.^3.*u.^2;
-u_esatta = @(t) 1./(t.^4+1);
+u_exact = @(t) 1./(t.^4+1);
 a = -10;
 b = 0;
 u0 = 1/10001;
@@ -24,12 +24,12 @@ err_MAab2am1 = zeros(size(N));
 
 for i = 1:length(N)
     n = N(i);
-    err_ab2(i) = ab2(f, u_esatta, a, b, u0, n);
-    err_MQab2(i) = RBF_adams(f, u_esatta, a, b, u0, n, 1);
-    err_MAab2(i) = RBF_adams(f, u_esatta, a, b, u0, n, 3);
-    err_ab2am1(i) = ab2am1(f, u_esatta, a, b, u0, n);
-    err_MQab2am1(i) = RBF_adams(f, u_esatta, a, b, u0, n, 2);
-    err_MAab2am1(i) = RBF_adams(f, u_esatta, a, b, u0, n, 4);
+    err_ab2(i) = ab2(f, u_exact, a, b, u0, n);
+    err_MQab2(i) = RBF_adams(f, u_exact, a, b, u0, n, 1);
+    err_MAab2(i) = RBF_adams(f, u_exact, a, b, u0, n, 3);
+    err_ab2am1(i) = ab2am1(f, u_exact, a, b, u0, n);
+    err_MQab2am1(i) = RBF_adams(f, u_exact, a, b, u0, n, 2);
+    err_MAab2am1(i) = RBF_adams(f, u_exact, a, b, u0, n, 4);
 end
 
 ord_ab2 = [NaN, log2(err_ab2(1:end-1)./err_ab2(2:end))];
@@ -69,3 +69,4 @@ axis([200 7000 10^(-8) 10^(2)])
 title('Global errors for $u'' = -4t^3u^2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 hold off;
+
