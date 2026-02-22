@@ -4,6 +4,9 @@
 % p = 1/2 and L=h^(-1/2), p=1 and L=0, p=1 and L=h^(-1) applied to the IVP:
 % u' = u + 2, u(0) = -1
 
+addpath('Classic methods IVP')
+addpath('RBF methods IVP')
+
 f = @(t,u) u + 2;
 u_esatta = @(t) exp(t) - 2; 
 a = 0;
@@ -35,7 +38,7 @@ ord_MQeulerC2_3 = [NaN, log2(err_MQeulerC2_3(1:end-1)./err_MQeulerC2_3(2:end))];
 
 %% Table generation
 met_name = {'Euler', 'MQ-RBF Euler 2', 'MQ-RBF Euler 2 $p=1$, $L=0$', 'MQ-RBF Euler 2 $p=1$, $L=h^(-1)$',...
-    'MQ-RBF Euler 2 $p=\frac{1}{2}$, $L=h^{\frac{1}{2}}$'};
+           'MQ-RBF Euler 2 $p=\frac{1}{2}$, $L=h^{\frac{1}{2}}$'};
 met_err = {err_euler, err_MQeuler, err_MQeulerC2_1, err_MQeulerC2_2, err_MQeulerC2_3};
 met_ord = {ord_euler, ord_MQeuler, ord_MQeulerC2_1, ord_MQeulerC2_2, ord_MQeulerC2_3};
 table_latex(met_name, N, met_err, met_ord);
@@ -48,8 +51,8 @@ slope1 = 0.8e-1 * (slope_N/10).^-1;
 slope2 = 0.5e-2 * (slope_N/10).^-2; 
 g_s1 = loglog(slope_N, slope1, 'b--', 'LineWidth', 1.2);
 g_s2 = loglog(slope_N, slope2, 'k--', 'LineWidth', 1.2);
-g_euler   = loglog(N, err_euler, 'b-x', 'LineWidth', 1, 'MarkerSize', 7);
-g_MQeuler  = loglog(N, err_MQeuler, 'm-s', 'LineWidth', 1, 'MarkerSize', 7);
+g_euler = loglog(N, err_euler, 'b-x', 'LineWidth', 1, 'MarkerSize', 7);
+g_MQeuler = loglog(N, err_MQeuler, 'm-s', 'LineWidth', 1, 'MarkerSize', 7);
 g_MQeulerC2_1 = loglog(N, err_MQeulerC2_1, 'k-*', 'LineWidth', 1, 'MarkerSize', 7);
 g_MQeulerC2_2 = loglog(N, err_MQeulerC2_2, 'g-d', 'LineWidth', 1, 'MarkerSize', 7);
 g_MQeulerC2_3 = loglog(N, err_MQeulerC2_3, 'r-o', 'LineWidth', 1, 'MarkerSize', 7);
@@ -64,3 +67,4 @@ axis([10 10000 10^(-10) 10^(0)])
 title('Global errors for $u'' = u+2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 hold off;
+
