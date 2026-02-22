@@ -8,7 +8,7 @@ addpath('Classic methods IVP')
 addpath('RBF methods IVP')
 
 f = @(t,u) u + 2;
-u_esatta = @(t) exp(t) - 2; 
+u_exact = @(t) exp(t) - 2; 
 a = 0;
 b = 1;
 u0 = -1;
@@ -23,11 +23,11 @@ err_MAeulerC2_3 = zeros(size(N));
 for i = 1:length(N)
     n = N(i);
     h = (b-a)/n; 
-    err_euler(i) = euler(f, u_esatta, a, b, u0, n);
-    err_MAeuler(i) = RBF_euler(f, u_esatta, a, b, u0, n, 2);
-    err_MAeulerC2_1(i) = RBF_eulerC2(f, u_esatta, a, b, u0, n, 1, 0, 2);
-    err_MAeulerC2_2(i) = RBF_eulerC2(f, u_esatta, a, b, u0, n, 1, h^(-1), 2);
-    err_MAeulerC2_3(i) = RBF_eulerC2(f, u_esatta, a, b, u0, n, 0.5, h^(-0.5), 2);
+    err_euler(i) = euler(f, u_exact, a, b, u0, n);
+    err_MAeuler(i) = RBF_euler(f, u_exact, a, b, u0, n, 2);
+    err_MAeulerC2_1(i) = RBF_eulerC2(f, u_exact, a, b, u0, n, 1, 0, 2);
+    err_MAeulerC2_2(i) = RBF_eulerC2(f, u_exact, a, b, u0, n, 1, h^(-1), 2);
+    err_MAeulerC2_3(i) = RBF_eulerC2(f, u_exact, a, b, u0, n, 0.5, h^(-0.5), 2);
 end
 
 ord_euler = [NaN, log2(err_euler(1:end-1)./err_euler(2:end))];
@@ -67,4 +67,5 @@ set(gca, 'XTick', N, 'XTickLabel', string(N));
 title('Global errors for $u'' = u+2$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 hold off;
+
 
