@@ -4,6 +4,9 @@
 % methods applied to the IVP: 
 % u'= (2t^2-u)/(t^2u-t), u(1) = 2
 
+addpath('Classic methods IVP')
+addpath('RBF methods IVP')
+
 f = @(t,u) (2.*t.^2-u)/(t.^2.*u-t);
 u_esatta = @(t) 1./t + sqrt(1./(t.^2)+4.*t-4);
 a = 1;
@@ -51,3 +54,4 @@ axis([10 400 10^(-7) 10^(-1)])
 title('Global errors for $u'' = \frac{2t^2-u}{t^2u-t}$', 'Interpreter', 'latex');
 axis square; grid on; box on;
 hold off;
+
