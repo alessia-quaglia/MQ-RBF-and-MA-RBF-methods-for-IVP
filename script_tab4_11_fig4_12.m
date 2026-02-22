@@ -5,6 +5,9 @@
 % corresponding MQ-RBF and MA-RBF modifications applied to the IVP: 
 % u'= -4t^3u^2, u(-10) = 1/10001
 
+addpath('Classic methods IVP')
+addpath('RBF methods IVP')
+
 f = @(t,u) -4.*t.^3.*u.^2;
 u_esatta = @(t) 1./(t.^4+1);
 a = -10;
@@ -54,8 +57,8 @@ g_ab2 = loglog(N, err_ab2, 'b-o', 'LineWidth', 1, 'MarkerSize', 7);
 g_MQab2 = loglog(N, err_MQab2, 'k-s', 'LineWidth', 1, 'MarkerSize', 7);
 g_MAab2 = loglog(N, err_MAab2, 'r-*', 'LineWidth', 1, 'MarkerSize', 7);
 g_ab2am1 = loglog(N, err_ab2am1, 'g-o', 'LineWidth', 1, 'MarkerSize', 7);
-g_MQab2am1 = loglog(N, err_MQab2am1,   'm-s', 'LineWidth', 1, 'MarkerSize', 7);
-g_MAab2am1 = loglog(N, err_MAab2am1,   'c-*', 'LineWidth', 1, 'MarkerSize', 7);
+g_MQab2am1 = loglog(N, err_MQab2am1, 'm-s', 'LineWidth', 1, 'MarkerSize', 7);
+g_MAab2am1 = loglog(N, err_MAab2am1, 'c-*', 'LineWidth', 1, 'MarkerSize', 7);
 legend([g_ab2, g_MQab2, g_MAab2, g_ab2am1, g_MQab2am1, g_MAab2am1, g_s1, g_s2], ...
        {'AB2', 'MQ-RBF AB2', 'MA-RBF AB2', 'AB2-AM1', 'MQ-RBF AB2-AM1', ...
        'MA-RBF AB2-AM1', 'Slope -2', 'Slope -3'}, 'Location', 'southwest', 'FontSize', 9);
