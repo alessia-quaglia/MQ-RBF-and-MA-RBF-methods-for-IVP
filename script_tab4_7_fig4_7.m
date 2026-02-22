@@ -5,6 +5,9 @@
 % corresponding MQ-RBF and MA-RBF modifications applied to the IVP: 
 % u'= (2t^2-u)/(t^2u-t), u(1) = 2
 
+addpath('Classic methods IVP')
+addpath('RBF methods IVP')
+
 f = @(t,u) (2.*t.^2-u)/(t.^2.*u-t);
 u_esatta = @(t) 1./t + sqrt(1./(t.^2)+4.*t-4);
 a = 1;
