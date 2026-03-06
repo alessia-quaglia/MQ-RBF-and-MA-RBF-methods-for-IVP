@@ -13,7 +13,7 @@ function [err1, err2] = RBF_adams_sys(f, u_es1, u_es2, a, b, u0, N, Meth)
 %           u0 = row vector containing the 2 initial values
 %            N = controls the step size h
 %         Meth = RBF Adams method: '1' MQ-RBF two-step Adams-Bashforth, 
-%                '2' MQ-RBF two step Adams-Bashforth one-step Adams Moulton
+%                '2' MQ-RBF two step Adams-Bashforth one-step Adams-Moulton
 %                predictor-corrector, '3' MA-RBF two-step Adams-Bashforth, 
 %                '4' MA-RBF two step Adams-Bashforth one-step Adams-Moulton
 %                predictor-corrector
@@ -60,4 +60,5 @@ end
 u = u';
 err1 = abs(u(end,1) - u_es1(b));
 err2 = abs(u(end,2) - u_es2(b));
+
 
