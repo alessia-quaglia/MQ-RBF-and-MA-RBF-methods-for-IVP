@@ -1,6 +1,6 @@
 function err = RBF_adams(f, u_es, a, b, u0, N, Meth)
 %
-% Usage:    err = MQ_ab2(f, u_es, a, b, u0, N)
+% Usage:    err = RBF_adams(f, u_es, a, b, u0, N, Meth)
 % Purpose:  it solves the differential equation u'(t) = f(u(t),t) with
 %           an initial condition u(a) = u0 and computes the global error
 %           using a RBF Adams method of the third order
@@ -54,6 +54,7 @@ for n = 3:N
     end
 end
 err = abs(u(end) - u_es(b));
+
 
 
 
